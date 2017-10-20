@@ -1,0 +1,8 @@
+
+// in the folder that contains main
+arm-none-eabi-as -g -o main.o main.s
+arm-none-eabi-as -g -a=main.lst -o main.o main.s
+arm-none-eabi-ld -Ttext 0x08000000 -o main.elf main.o
+sudo openocd -f interface/stlink-v2.cfg -f target/stm32f0x.cfg
+
+gcc-arm-none-eabi main.elf
